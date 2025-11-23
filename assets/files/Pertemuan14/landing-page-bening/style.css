@@ -1,0 +1,14 @@
+
+.jumbotron {
+    padding-top: 6rem;
+    background-color: #fbe2f7;
+}
+
+#projects {
+    background-color: #fbe2f7;
+}
+
+.card-img-top {
+    height: 300px; /* bebas, misal 250–350px */
+    object-fit: cover;
+}

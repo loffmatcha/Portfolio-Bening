@@ -1,0 +1,518 @@
+/* === RESET & DASAR === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: #111;
+}
+
+/* === NAVBAR === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem 5%;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+/* Menu utama (desktop) */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #e0a75e;
+}
+
+/* === DROPDOWN === */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style: none;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: none;
+  min-width: 160px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.25s ease;
+  z-index: 999;
+}
+
+.dropdown-menu.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-menu a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 400;
+  display: block;
+  transition: 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background: #f8f8f8;
+  color: #e0a75e;
+}
+
+.dropdown > a i {
+  font-size: 0.9rem;
+  margin-left: 4px;
+}
+
+/* === TOMBOL HAMBURGER === */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #111;
+  transition: 0.3s;
+}
+
+/* === RESPONSIVE NAVBAR === */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    display: none;
+    border-top: 1px solid #eee;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    transform: none;
+    opacity: 1;
+    display: none;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+}
+
+/* === INTRO SECTION (index.html) === */
+.intro {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8%;
+}
+
+.intro-text {
+  max-width: 600px;
+  margin-top: 5rem;
+}
+
+.hello {
+  color: #e0a75e;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.intro-text h1 {
+  font-size: 3rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.intro-text span {
+  font-weight: 700;
+  color: #e0a75e;
+}
+
+/* === SOSIAL ICONS === */
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: absolute;
+  right: 5%;
+}
+
+.socials a {
+  color: #444;
+  font-size: 1.6rem;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #e0a75e;
+}
+
+/* === ABOUT SECTION (about.html) === */
+.about-section {
+  min-height: 100vh;
+  padding: 8rem 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.about-img img {
+  width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.about-text h3 {
+  color: #e0a75e;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  max-width: 550px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.8rem 1.5rem;
+  background: #e0a75e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.resume-btn:hover {
+  background: #c38c46;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 1.2rem;
+  }
+
+  .intro {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .socials {
+    flex-direction: row;
+    position: static;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-img img {
+    width: 220px;
+  }
+
+}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  /* === NAVBAR === */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 1rem 5%;
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #e0a75e;
+  }
+
+  /* === GALLERY SECTION === */
+  .gallery-section {
+    min-height: 100vh;
+    padding: 8rem 10% 5rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-container {
+    text-align: center;
+    max-width: 1100px;
+  }
+
+  .gallery-container h3 {
+    color: #e0a75e;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .gallery-container h1 {
+    font-size: 2.2rem;
+    color: #222;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 4rem;
+  }
+
+  /* === SLIDER OTOMATIS === */
+  .slider {
+    width: 90%;
+    max-width: 1000px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  .slides {
+    display: flex;
+    width: calc(350px * 6);
+    animation: slide 20s infinite linear;
+  }
+
+  .slides img {
+    width: 350px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-right: 15px;
+  }
+
+  @keyframes slide {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(0); }
+    25%  { transform: translateX(-350px); }
+    40%  { transform: translateX(-350px); }
+    45%  { transform: translateX(-700px); }
+    60%  { transform: translateX(-700px); }
+    65%  { transform: translateX(-1050px); }
+    80%  { transform: translateX(-1050px); }
+    85%  { transform: translateX(-1400px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .gallery-container h1 {
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
+
+    .slides img {
+      width: 260px;
+      height: 170px;
+    }
+
+    .slides {
+      width: calc(260px * 6);
+      animation: slide 15s infinite linear;
+    }
+  }
+
+  /* === CONTACT SECTION === */
+.contact-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 10%;
+  background: #fff;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column; /* ⬅️ ini bikin elemen jadi menumpuk ke bawah */
+  align-items: flex-start;
+  width: 100%;
+  max-width: 800px;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.contact-info h3 {
+  color: #e0a75e;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.contact-info h1 {
+  font-size: 2rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.contact-details h4 {
+  color: #e0a75e;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.contact-details p {
+  color: #444;
+  margin-bottom: 0.8rem;
+}
+
+.contact-details a {
+  color: #444;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.contact-details a:hover {
+  color: #e0a75e;
+}
+
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-info h1 {
+    font-size: 1.7rem;
+  }
+}
+
+
+
