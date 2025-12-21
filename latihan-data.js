@@ -110,7 +110,7 @@ const latihanData = {
         category: "Media",
         icon: "fa-play-circle",
         status: "selesai",
-        link: "latihan/pertemuan 4/audio-video.html"
+        link: "latihan/pertemuan 4/audio_video.html"
       },
       {
         id: 2,
@@ -137,7 +137,7 @@ const latihanData = {
         category: "Interactive",
         icon: "fa-map-marked-alt",
         status: "selesai",
-        link: "latihan/pertemuan 4/image-map.html"
+        link: "latihan/pertemuan 4/imagemap.html"
       },
       {
         id: 5,
@@ -155,7 +155,7 @@ const latihanData = {
         category: "Advanced",
         icon: "fa-sliders-h",
         status: "selesai",
-        link: "latihan/pertemuan 4/video-js.html"
+        link: "latihan/pertemuan 4/videowithjs.html"
       }
     ]
   },
@@ -269,7 +269,7 @@ const latihanData = {
         category: "Advanced",
         icon: "fa-th",
         status: "selesai",
-        link: "latihan/pertemuan 7/tabel_colspan_rowspan.html"
+        link: "latihan/pertemuan 7/latihan.html"
       }
 
     ]
@@ -402,7 +402,7 @@ const latihanData = {
         category: "Styling",
         icon: "fa-paint-brush",
         status: "selesai",
-        link: "latihan/pertemuan 10/iframe_css.html"
+        link: "latihan/pertemuan 10/iframe(css).html"
       }
     ]
   },
@@ -638,7 +638,7 @@ const latihanData = {
         category: "Dialog",
         icon: "fa-bell",
         status: "selesai",
-        link: "latihan/pertemuan 15/alert.html"
+        link: "latihan/pertemuan 15/latihan15-alert.html"
       },
       {
         id: 2,
@@ -647,7 +647,7 @@ const latihanData = {
         category: "Dialog",
         icon: "fa-question-circle",
         status: "selesai",
-        link: "latihan/pertemuan 15/confirm.html"
+        link: "latihan/pertemuan 15/latihan15-confirm.html"
       },
       {
         id: 3,
@@ -656,7 +656,7 @@ const latihanData = {
         category: "Event",
         icon: "fa-mouse-pointer",
         status: "selesai",
-        link: "latihan/pertemuan 15/EventOnclick.html"
+        link: "latihan/pertemuan 15/latihan15-EventOnclick.html"
       },
       {
         id: 4,
@@ -665,7 +665,7 @@ const latihanData = {
         category: "Input",
         icon: "fa-keyboard",
         status: "selesai",
-        link: "latihan/pertemuan 15/prompt.html"
+        link: "latihan/pertemuan 15/latihan15-prompt.html"
       },
       {
         id: 5,
@@ -721,7 +721,7 @@ const latihanData = {
         category: "Loop",
         icon: "fa-sync",
         status: "selesai",
-        link: "latihan/pertemuan 16/looping.html"
+        link: "latihan/pertemuan 16/latihan_looping.html"
       },
       {
         id: 2,
@@ -730,7 +730,7 @@ const latihanData = {
         category: "Operator",
         icon: "fa-plus-minus",
         status: "selesai",
-        link: "latihan/pertemuan 16/operator.html"
+        link: "latihan/pertemuan 16/Latihan16-operator.html"
       },
       {
         id: 3,
@@ -739,7 +739,7 @@ const latihanData = {
         category: "Math",
         icon: "fa-calculator",
         status: "selesai",
-        link: "latihan/pertemuan 16/operator_aritmatika.html"
+        link: "latihan/pertemuan 16/Latihan16-operatoraritmatika.html"
       },
       {
         id: 4,
@@ -748,7 +748,7 @@ const latihanData = {
         category: "Assignment",
         icon: "fa-equals",
         status: "selesai",
-        link: "latihan/pertemuan 16/operator_assignment.html"
+        link: "latihan/pertemuan 16/Latihan16-operatorassignment.html"
       },
       {
         id: 5,
@@ -757,7 +757,7 @@ const latihanData = {
         category: "Comparison",
         icon: "fa-balance-scale",
         status: "selesai",
-        link: "latihan/pertemuan 16/operator_pembanding.html"
+        link: "latihan/pertemuan 16/Latihan16-Operatorpembanding.html"
       },
       {
         id: 6,
@@ -766,7 +766,7 @@ const latihanData = {
         category: "Logic",
         icon: "fa-sitemap",
         status: "selesai",
-        link: "latihan/pertemuan 16/operator_logika.html"
+        link: "latihan/pertemuan 16/Latihan16-operatorlogika.html"
       },
       {
         id: 7,
@@ -775,7 +775,7 @@ const latihanData = {
         category: "String",
         icon: "fa-quote-right",
         status: "selesai",
-        link: "latihan/pertemuan 16/operator_string.html"
+        link: "latihan/pertemuan 16/Latihan16-operatorstring.html"
       },
       {
         id: 8,
@@ -784,7 +784,7 @@ const latihanData = {
         category: "Type",
         icon: "fa-search",
         status: "selesai",
-        link: "latihan/pertemuan 16/tipedata.html"
+        link: "latihan/pertemuan 16/Latihan16-tipedata.html"
       }
     ]
   },
