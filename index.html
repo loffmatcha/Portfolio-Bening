@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Bening Fajriatul Hawa</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Remix Icon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <h2 class="logo">BeningFH</h2>
+
+        <!-- Tombol hamburger -->
+        <div class="menu-toggle" id="menu-toggle">
+          <i class="ri-menu-line"></i>
+        </div>
+
+        <!-- Link navigasi -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="latihan.html">Latihan</a></li>
+          <!-- <li class="dropdown">
+            <a href="tugas.html" class="dropdown-toggle"
+              >Tugas <i class="ri-arrow-down-s-line"></i
+            ></a>
+            <ul class="dropdown-menu">
+              <li>
+              <a href="assets/files/Pertemuan2/latihan.html">Pertemuan2</a>
+              </li>
+              <li>
+                <a href="assets/files/pertemuan3/latihan.html">Pertemuan3</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan4/latihan.html">Pertemuan4</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan6/latihan.html">Pertemuan6</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan7/latihan/latihan.html"
+                  >Pertemuan7</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan8/latihan.html">Pertemuan8</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan9/index.html">Pertemuan9</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan10/Pertemuan10/iframe2.html"
+                  >Pertemuan10</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan11/tugasp11.html"
+                  >Pertemuan11</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan12/tugasp12.html"
+                  >Pertemuan12</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan13/latihan3.html"
+                  >Pertemuan13</a>
+              </li>
+              <li>
+                <a href="assets/files/Pertemuan14/landing-page-bening/index.html"
+                  >Pertemuan14</a>
+              </li> -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Icon Library -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro">
+      <div class="intro-text">
+        <h4 class="hello">HELLO,</h4>
+        <h1>
+          I am <span>Bening Fajriatul Hawa</span><br />Technology Enthusiast
+        </h1>
+      </div>
+
+      <div class="socials">
+        <a href="https://instagram.com/beningfh"
+          ><i class="ri-instagram-line"></i
+        ></a>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const dropdownToggle = document.querySelector(".dropdown-toggle");
+        const dropdownMenu = document.querySelector(".dropdown-menu");
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        // === Dropdown ===
+        dropdownToggle.addEventListener("click", (e) => {
+          e.preventDefault();
+          dropdownMenu.classList.toggle("show");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !dropdownToggle.contains(e.target) &&
+            !dropdownMenu.contains(e.target)
+          ) {
+            dropdownMenu.classList.remove("show");
+          }
+        });
+
+        // === Hamburger ===
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+          menuToggle.innerHTML = navLinks.classList.contains("show")
+            ? '<i class="ri-close-line"></i>'
+            : '<i class="ri-menu-line"></i>';
+        });
+      });
+    </script>
+  </body>
+</html>

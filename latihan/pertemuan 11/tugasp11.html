@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Website Bening</title>
+  <style type="text/css">
+    /* Aturan CSS embedded */
+    body {
+      font-family: "Arial", sans-serif;
+      font-size: 14px;
+      color: #222;
+      background: url('images/bg-pattern.jpeg');
+      margin: 40px;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #ffc0cb;
+      padding: 20px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    nav a { text-decoration: none; margin-right: 12px; }
+    nav a:link { color: #FF0000; }     /* link belum dikunjungi */
+    nav a:visited { color: gray; }  /* link telah dikunjungi */
+    nav a:hover { color: #FF00FF; }    /* hover */
+
+    .content {
+      background-color: #e0ffff;
+      padding: 25px;
+      border: 8px solid gray;
+      color: purple;
+      font-size: 16px;
+      text-align: justify;
+    }
+
+    img.float-right { float: right; width: 120px; height: auto; margin: 0 0 8px 12px; }
+    /* responsive sederhana */
+    @media (max-width: 600px) {
+      body { margin: 10px; font-size: 13px; }
+      header, .content { padding: 12px; }
+      img.float-right { float: none; display: block; margin: 8px auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Selamat Datang di Web Saya</h1>
+    <nav><a href="#">Beranda</a><a href="#">Tentang</a><a href="#">Kontak</a></nav>
+  </header>
+
+  <div class="content">
+    <img src="images/bunga.jpeg" alt="bunga" class="float-right">
+    <p>Ini contoh teks konten. Lorem ipsum dolor sit amet...</p>
+    <p>Paragraf tambahan untuk menampilkan style background dan teks.</p>
+  </div>
+</body>
+</html>

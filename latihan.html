@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Latihan HTML - BeningFH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Latihan Page Styles */
+    .latihan-section {
+      min-height: 100vh;
+      padding: 8rem 5% 4rem;
+      background: #f8f9fa;
+    }
+
+    .latihan-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .latihan-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 1rem;
+    }
+
+    .latihan-header p {
+      color: #666;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .progress-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 3rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .progress-text h3 {
+      color: #111;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-text p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .progress-stats {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e0a75e;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.3rem;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 12px;
+      background: #e9ecef;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #e0a75e, #c38c46);
+      border-radius: 20px;
+      transition: width 1s ease;
+    }
+
+    .latihan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .latihan-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      padding: 2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .latihan-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .latihan-card .w-full {
+      width: 100%;
+    }
+
+    .latihan-card .h-40 {
+      height: 10rem;
+    }
+
+    .latihan-card .bg-gradient-to-br {
+      background: linear-gradient(to bottom right, var(--tw-gradient-stops));
+    }
+
+    .latihan-card .rounded-lg {
+      border-radius: 0.5rem;
+    }
+
+    .latihan-card .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .latihan-card .mb-3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .latihan-card .grid {
+      display: grid;
+    }
+
+    .latihan-card .place-items-center {
+      place-items: center;
+    }
+
+    .latihan-card .text-6xl {
+      font-size: 3.75rem;
+    }
+
+    /* Gradient Colors */
+    .from-orange-500\/20 { --tw-gradient-from: rgba(249, 115, 22, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-red-400\/20 { --tw-gradient-to: rgba(248, 113, 113, 0.2); }
+    .from-blue-500\/20 { --tw-gradient-from: rgba(59, 130, 246, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-indigo-400\/20 { --tw-gradient-to: rgba(129, 140, 248, 0.2); }
+    .from-purple-500\/20 { --tw-gradient-from: rgba(168, 85, 247, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-pink-400\/20 { --tw-gradient-to: rgba(244, 114, 182, 0.2); }
+    .from-green-500\/20 { --tw-gradient-from: rgba(34, 197, 94, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-emerald-400\/20 { --tw-gradient-to: rgba(52, 211, 153, 0.2); }
+    .from-yellow-500\/20 { --tw-gradient-from: rgba(234, 179, 8, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-orange-400\/20 { --tw-gradient-to: rgba(251, 146, 60, 0.2); }
+    .from-cyan-500\/20 { --tw-gradient-from: rgba(6, 182, 212, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-blue-400\/20 { --tw-gradient-to: rgba(96, 165, 250, 0.2); }
+    .from-red-500\/20 { --tw-gradient-from: rgba(239, 68, 68, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .from-indigo-500\/20 { --tw-gradient-from: rgba(99, 102, 241, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-purple-400\/20 { --tw-gradient-to: rgba(192, 132, 252, 0.2); }
+    .from-teal-500\/20 { --tw-gradient-from: rgba(20, 184, 166, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-cyan-400\/20 { --tw-gradient-to: rgba(34, 211, 238, 0.2); }
+    .from-pink-500\/20 { --tw-gradient-from: rgba(236, 72, 153, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-rose-400\/20 { --tw-gradient-to: rgba(251, 113, 133, 0.2); }
+    .from-violet-500\/20 { --tw-gradient-from: rgba(139, 92, 246, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .from-amber-500\/20 { --tw-gradient-from: rgba(245, 158, 11, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-yellow-400\/20 { --tw-gradient-to: rgba(250, 204, 21, 0.2); }
+    .to-amber-400\/20 { --tw-gradient-to: rgba(251, 191, 36, 0.2); }
+    .from-emerald-500\/20 { --tw-gradient-from: rgba(16, 185, 129, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .to-green-400\/20 { --tw-gradient-to: rgba(74, 222, 128, 0.2); }
+    .from-sky-500\/20 { --tw-gradient-from: rgba(14, 165, 233, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .from-fuchsia-500\/20 { --tw-gradient-from: rgba(217, 70, 239, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+    .from-lime-500\/20 { --tw-gradient-from: rgba(132, 204, 22, 0.2); --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+
+    /* Icon Colors */
+    .text-orange-400 { color: #fb923c; }
+    .text-blue-400 { color: #60a5fa; }
+    .text-purple-400 { color: #c084fc; }
+    .text-green-400 { color: #4ade80; }
+    .text-yellow-400 { color: #facc15; }
+    .text-cyan-400 { color: #22d3ee; }
+    .text-red-400 { color: #f87171; }
+    .text-indigo-400 { color: #818cf8; }
+    .text-teal-400 { color: #2dd4bf; }
+    .text-pink-400 { color: #f472b6; }
+    .text-violet-400 { color: #a78bfa; }
+    .text-amber-400 { color: #fbbf24; }
+    .text-emerald-400 { color: #34d399; }
+    .text-sky-400 { color: #38bdf8; }
+    .text-fuchsia-400 { color: #e879f9; }
+    .text-lime-400 { color: #a3e635; }
+    .text-rose-400 { color: #fb7185; }
+
+    .category-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: #f0f9ff;
+      color: #0284c7;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .meta-item i {
+      color: #e0a75e;
+    }
+
+    .card-description {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+
+    .sub-count {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .view-link {
+      color: #e0a75e;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .view-link:hover {
+      gap: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .latihan-section {
+        padding: 6rem 3% 3rem;
+      }
+
+      .latihan-header h1 {
+        font-size: 2rem;
+      }
+
+      .progress-stats {
+        gap: 1rem;
+      }
+
+      .stat-number {
+        font-size: 1.5rem;
+      }
+
+      .latihan-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">BeningFH</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="latihan.html">Latihan</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Latihan Section -->
+  <section class="latihan-section">
+    <div class="latihan-header">
+      <h1>📚 Daftar Latihan HTML & JavaScript</h1>
+      <p>Dokumentasi lengkap perjalanan pembelajaran web development dari dasar hingga advanced</p>
+    </div>
+
+    <!-- Progress Card -->
+    <div class="progress-card">
+      <div class="progress-info">
+        <div class="progress-text">
+          <h3>Progress Pembelajaran</h3>
+          <p>Total latihan yang telah diselesaikan</p>
+        </div>
+        <div class="progress-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="selesaiCount">0</span>
+            <span class="stat-label">Selesai</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="totalCount">0</span>
+            <span class="stat-label">Total</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="percentageCount">0%</span>
+            <span class="stat-label">Progress</span>
+          </div>
+        </div>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Latihan Grid -->
+    <div class="latihan-grid" id="latihanGrid"></div>
+  </section>
+
+  <script src="latihan-data.js"></script>
+  <script>
+    // Navbar Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Render Progress
+    function renderProgress() {
+      const progress = calculateOverallProgress();
+      document.getElementById('selesaiCount').textContent = progress.selesai;
+      document.getElementById('totalCount').textContent = progress.total;
+      document.getElementById('percentageCount').textContent = progress.percentage + '%';
+      
+      setTimeout(() => {
+        document.getElementById('progressBar').style.width = progress.percentage + '%';
+      }, 200);
+    }
+
+    // Gradients dan Icons untuk setiap card
+    const cardStyles = [
+      { gradient: 'from-orange-500/20 to-red-400/20', iconClass: 'fa-brands fa-html5', iconColor: 'text-orange-400' },
+      { gradient: 'from-blue-500/20 to-indigo-400/20', iconClass: 'fa-solid fa-font', iconColor: 'text-blue-400' },
+      { gradient: 'from-purple-500/20 to-pink-400/20', iconClass: 'fa-solid fa-video', iconColor: 'text-purple-400' },
+      { gradient: 'from-green-500/20 to-emerald-400/20', iconClass: 'fa-solid fa-link', iconColor: 'text-green-400' },
+      { gradient: 'from-yellow-500/20 to-orange-400/20', iconClass: 'fa-solid fa-list', iconColor: 'text-yellow-400' },
+      { gradient: 'from-cyan-500/20 to-blue-400/20', iconClass: 'fa-solid fa-table', iconColor: 'text-cyan-400' },
+      { gradient: 'from-red-500/20 to-pink-400/20', iconClass: 'fa-solid fa-file-lines', iconColor: 'text-red-400' },
+      { gradient: 'from-indigo-500/20 to-purple-400/20', iconClass: 'fa-solid fa-border-all', iconColor: 'text-indigo-400' },
+      { gradient: 'from-teal-500/20 to-cyan-400/20', iconClass: 'fa-solid fa-window-maximize', iconColor: 'text-teal-400' },
+      { gradient: 'from-pink-500/20 to-rose-400/20', iconClass: 'fa-brands fa-css3-alt', iconColor: 'text-pink-400' },
+      { gradient: 'from-violet-500/20 to-purple-400/20', iconClass: 'fa-solid fa-palette', iconColor: 'text-violet-400' },
+      { gradient: 'from-amber-500/20 to-yellow-400/20', iconClass: 'fa-solid fa-square', iconColor: 'text-amber-400' },
+      { gradient: 'from-yellow-500/20 to-amber-400/20', iconClass: 'fa-brands fa-js', iconColor: 'text-yellow-400' },
+      { gradient: 'from-emerald-500/20 to-green-400/20', iconClass: 'fa-solid fa-comment-dots', iconColor: 'text-emerald-400' },
+      { gradient: 'from-sky-500/20 to-blue-400/20', iconClass: 'fa-solid fa-calculator', iconColor: 'text-sky-400' },
+      { gradient: 'from-fuchsia-500/20 to-pink-400/20', iconClass: 'fa-solid fa-repeat', iconColor: 'text-fuchsia-400' },
+      { gradient: 'from-lime-500/20 to-green-400/20', iconClass: 'fa-solid fa-layer-group', iconColor: 'text-lime-400' }
+    ];
+
+    // Render Latihan Cards
+    function renderLatihanCards() {
+      const latihanGrid = document.getElementById('latihanGrid');
+      const allLatihan = getAllLatihan();
+      
+      latihanGrid.innerHTML = '';
+      
+      allLatihan.forEach((latihan, index) => {
+        const card = document.createElement('a');
+        card.href = `sublatihan.html?id=${latihan.id}`;
+        card.className = 'latihan-card';
+        
+        const selesai = latihan.subLatihan.filter(sub => sub.status === 'selesai').length;
+        const style = cardStyles[index % cardStyles.length];
+        
+        card.innerHTML = `
+          <div class="w-full h-40 bg-gradient-to-br ${style.gradient} rounded-lg mb-4 grid place-items-center">
+            <i class="${style.iconClass} text-6xl ${style.iconColor}"></i>
+          </div>
+          <div class="mb-3">
+            <span class="category-badge">Pemrograman Web 1</span>
+          </div>
+          <h3 class="card-title">${latihan.title}</h3>
+          <p class="card-description">${latihan.description}</p>
+          <div class="card-footer">
+            <span class="meta-item">
+              <i class="far fa-calendar"></i>
+              Minggu ${latihan.minggu}
+            </span>
+            <span class="view-link">
+              Lihat Detail <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+        `;
+        
+        latihanGrid.appendChild(card);
+      });
+    }
+
+    // Initialize
+    renderProgress();
+    renderLatihanCards();
+  </script>
+</body>
+</html>
