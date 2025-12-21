@@ -3,625 +3,607 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sub Latihan - BeningFH</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Sub Latihan - Pemrograman Web</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
   <style>
-    /* Sub Latihan Page Styles */
-    .sublatihan-section {
-      min-height: 100vh;
-      padding: 8rem 5% 4rem;
-      background: #f8f9fa;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+    }
+
+    .navbar {
+      background: white;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 0;
+    }
+
+    .nav-link {
+      color: #666;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .nav-link:hover {
+      color: #1a1a1a;
+      background: #f5f5f5;
+    }
+
+    .nav-link.active {
+      color: #1a1a1a;
+      background: #f0f0f0;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      border-color: #d0d0d0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      gap: 4px;
+    }
+
+    .badge-category {
+      background: #f0f0f0;
+      color: #666;
+    }
+
+    .badge-selesai {
+      background: #dcfce7;
+      color: #16a34a;
+    }
+
+    .badge-progress {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    .badge-belum {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    .number-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .stats-card {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 32px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: #1a1a1a;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+    }
+
+    .btn-outline {
+      background: white;
+      color: #1a1a1a;
+      border: 1px solid #e5e5e5;
+    }
+
+    .btn-outline:hover {
+      background: #f5f5f5;
     }
 
     .breadcrumb {
-      max-width: 1200px;
-      margin: 0 auto 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
       color: #666;
-    }
-
-    .breadcrumb a {
-      color: #e0a75e;
       text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .breadcrumb a:hover {
-      color: #c38c46;
-    }
-
-    .breadcrumb i {
-      font-size: 0.7rem;
-    }
-
-    .sublatihan-header {
-      max-width: 1200px;
-      margin: 0 auto 3rem;
-      background: white;
-      padding: 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
-
-    .header-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .header-icon {
-      font-size: 4rem;
-      flex-shrink: 0;
-    }
-
-    .header-content {
-      flex: 1;
-    }
-
-    .header-content h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 0.5rem;
-    }
-
-    .header-content p {
-      color: #666;
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .header-meta {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .meta-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #f8f9fa;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    .meta-badge i {
-      color: #e0a75e;
-    }
-
-    .sublatihan-list {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .sublatihan-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      padding: 2rem;
-      transition: all 0.3s ease;
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      border-left: 4px solid transparent;
-    }
-
-    .sublatihan-card:hover {
-      transform: translateX(8px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-      border-left-color: #e0a75e;
-    }
-
-    .sub-icon-box {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, var(--icon-gradient-from), var(--icon-gradient-to));
-    }
-
-    .sub-number {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, #e0a75e, #c38c46);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-
-    .icon-wrapper {
-      position: relative;
-    }
-
-    .sub-content {
-      flex: 1;
-    }
-
-    .sub-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 0.8rem;
-      flex-wrap: wrap;
-    }
-
-    .sub-title-group {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .sub-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #111;
-      margin-bottom: 0.5rem;
-    }
-
-    .sub-category {
+      font-size: 14px;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.8rem;
-      background: #f0f9ff;
-      color: #0284c7;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      gap: 8px;
     }
 
-    /* Icon gradient colors mapping */
-    .gradient-html5 { --icon-gradient-from: rgba(249, 115, 22, 0.2); --icon-gradient-to: rgba(248, 113, 113, 0.2); }
-    .gradient-seo { --icon-gradient-from: rgba(139, 92, 246, 0.2); --icon-gradient-to: rgba(244, 114, 182, 0.2); }
-    .gradient-text { --icon-gradient-from: rgba(59, 130, 246, 0.2); --icon-gradient-to: rgba(129, 140, 248, 0.2); }
-    .gradient-font { --icon-gradient-from: rgba(34, 197, 94, 0.2); --icon-gradient-to: rgba(52, 211, 153, 0.2); }
-    .gradient-format { --icon-gradient-from: rgba(234, 179, 8, 0.2); --icon-gradient-to: rgba(251, 146, 60, 0.2); }
-    .gradient-animation { --icon-gradient-from: rgba(168, 85, 247, 0.2); --icon-gradient-to: rgba(244, 114, 182, 0.2); }
-    .gradient-special { --icon-gradient-from: rgba(6, 182, 212, 0.2); --icon-gradient-to: rgba(96, 165, 250, 0.2); }
-    .gradient-media { --icon-gradient-from: rgba(239, 68, 68, 0.2); --icon-gradient-to: rgba(244, 114, 182, 0.2); }
-    .gradient-audio { --icon-gradient-from: rgba(236, 72, 153, 0.2); --icon-gradient-to: rgba(251, 113, 133, 0.2); }
-    .gradient-image { --icon-gradient-from: rgba(99, 102, 241, 0.2); --icon-gradient-to: rgba(192, 132, 252, 0.2); }
-    .gradient-interactive { --icon-gradient-from: rgba(20, 184, 166, 0.2); --icon-gradient-to: rgba(34, 211, 238, 0.2); }
-    .gradient-video { --icon-gradient-from: rgba(245, 158, 11, 0.2); --icon-gradient-to: rgba(250, 204, 21, 0.2); }
-    .gradient-advanced { --icon-gradient-from: rgba(217, 70, 239, 0.2); --icon-gradient-to: rgba(244, 114, 182, 0.2); }
-    .gradient-navigation { --icon-gradient-from: rgba(16, 185, 129, 0.2); --icon-gradient-to: rgba(74, 222, 128, 0.2); }
-    .gradient-list { --icon-gradient-from: rgba(14, 165, 233, 0.2); --icon-gradient-to: rgba(96, 165, 250, 0.2); }
-    .gradient-table { --icon-gradient-from: rgba(132, 204, 22, 0.2); --icon-gradient-to: rgba(74, 222, 128, 0.2); }
-    .gradient-form { --icon-gradient-from: rgba(239, 68, 68, 0.2); --icon-gradient-to: rgba(251, 113, 133, 0.2); }
-    .gradient-layout { --icon-gradient-from: rgba(99, 102, 241, 0.2); --icon-gradient-to: rgba(192, 132, 252, 0.2); }
-    .gradient-content { --icon-gradient-from: rgba(34, 197, 94, 0.2); --icon-gradient-to: rgba(52, 211, 153, 0.2); }
-    .gradient-embed { --icon-gradient-from: rgba(20, 184, 166, 0.2); --icon-gradient-to: rgba(34, 211, 238, 0.2); }
-    .gradient-styling { --icon-gradient-from: rgba(236, 72, 153, 0.2); --icon-gradient-to: rgba(251, 113, 133, 0.2); }
-    .gradient-semantic { --icon-gradient-from: rgba(245, 158, 11, 0.2); --icon-gradient-to: rgba(251, 191, 36, 0.2); }
-    .gradient-background { --icon-gradient-from: rgba(168, 85, 247, 0.2); --icon-gradient-to: rgba(244, 114, 182, 0.2); }
-    .gradient-alignment { --icon-gradient-from: rgba(59, 130, 246, 0.2); --icon-gradient-to: rgba(129, 140, 248, 0.2); }
-    .gradient-selector { --icon-gradient-from: rgba(234, 179, 8, 0.2); --icon-gradient-to: rgba(251, 146, 60, 0.2); }
-    .gradient-external { --icon-gradient-from: rgba(6, 182, 212, 0.2); --icon-gradient-to: rgba(96, 165, 250, 0.2); }
-    .gradient-organization { --icon-gradient-from: rgba(139, 92, 246, 0.2); --icon-gradient-to: rgba(192, 132, 252, 0.2); }
-    .gradient-container { --icon-gradient-from: rgba(245, 158, 11, 0.2); --icon-gradient-to: rgba(250, 204, 21, 0.2); }
-    .gradient-inline { --icon-gradient-from: rgba(16, 185, 129, 0.2); --icon-gradient-to: rgba(74, 222, 128, 0.2); }
-    .gradient-output { --icon-gradient-from: rgba(234, 179, 8, 0.2); --icon-gradient-to: rgba(251, 146, 60, 0.2); }
-    .gradient-math { --icon-gradient-from: rgba(14, 165, 233, 0.2); --icon-gradient-to: rgba(96, 165, 250, 0.2); }
-    .gradient-variable { --icon-gradient-from: rgba(99, 102, 241, 0.2); --icon-gradient-to: rgba(192, 132, 252, 0.2); }
-    .gradient-dialog { --icon-gradient-from: rgba(16, 185, 129, 0.2); --icon-gradient-to: rgba(74, 222, 128, 0.2); }
-    .gradient-event { --icon-gradient-from: rgba(236, 72, 153, 0.2); --icon-gradient-to: rgba(251, 113, 133, 0.2); }
-    .gradient-input { --icon-gradient-from: rgba(168, 85, 247, 0.2); --icon-gradient-to: rgba(244, 114, 182, 0.2); }
-    .gradient-loop { --icon-gradient-from: rgba(6, 182, 212, 0.2); --icon-gradient-to: rgba(96, 165, 250, 0.2); }
-    .gradient-operator { --icon-gradient-from: rgba(239, 68, 68, 0.2); --icon-gradient-to: rgba(248, 113, 113, 0.2); }
-    .gradient-assignment { --icon-gradient-from: rgba(234, 179, 8, 0.2); --icon-gradient-to: rgba(251, 146, 60, 0.2); }
-    .gradient-comparison { --icon-gradient-from: rgba(132, 204, 22, 0.2); --icon-gradient-to: rgba(74, 222, 128, 0.2); }
-    .gradient-logic { --icon-gradient-from: rgba(99, 102, 241, 0.2); --icon-gradient-to: rgba(192, 132, 252, 0.2); }
-    .gradient-string { --icon-gradient-from: rgba(236, 72, 153, 0.2); --icon-gradient-to: rgba(251, 113, 133, 0.2); }
-    .gradient-type { --icon-gradient-from: rgba(20, 184, 166, 0.2); --icon-gradient-to: rgba(34, 211, 238, 0.2); }
-    .gradient-conditional { --icon-gradient-from: rgba(245, 158, 11, 0.2); --icon-gradient-to: rgba(250, 204, 21, 0.2); }
-    .gradient-array { --icon-gradient-from: rgba(132, 204, 22, 0.2); --icon-gradient-to: rgba(74, 222, 128, 0.2); }
-    .gradient-function { --icon-gradient-from: rgba(14, 165, 233, 0.2); --icon-gradient-to: rgba(96, 165, 250, 0.2); }
-    .gradient-project { --icon-gradient-from: rgba(217, 70, 239, 0.2); --icon-gradient-to: rgba(244, 114, 182, 0.2); }
-
-    .sub-status {
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-shrink: 0;
+    .breadcrumb:hover {
+      color: #1a1a1a;
     }
 
-    .status-selesai {
-      background: #d4edda;
-      color: #155724;
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1a1a1a;
     }
 
-    .status-proses {
-      background: #fff3cd;
-      color: #856404;
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #1a1a1a;
     }
 
-    .sub-description {
+    .hero-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+
+    .hero-description {
+      font-size: 18px;
       color: #666;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-    }
-
-    .sub-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1.5rem;
-      background: #e0a75e;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-
-    .sub-link:hover {
-      background: #c38c46;
-      gap: 0.8rem;
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 4rem 2rem;
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0 auto 24px;
     }
 
-    .empty-state i {
-      font-size: 5rem;
-      color: #ddd;
-      margin-bottom: 1.5rem;
-    }
-
-    .empty-state h3 {
-      font-size: 1.5rem;
-      color: #666;
-      margin-bottom: 1rem;
-    }
-
-    .empty-state p {
-      color: #888;
-      margin-bottom: 2rem;
-    }
-
-    .btn-back {
-      display: inline-flex;
+    .hero-meta {
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.5rem;
-      background: #e0a75e;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: 0.3s;
+      justify-content: center;
+      gap: 24px;
+      font-size: 14px;
+      color: #666;
     }
 
-    .btn-back:hover {
-      background: #c38c46;
+    .mobile-menu {
+      display: none;
+      padding-top: 16px;
+      margin-top: 16px;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .nav-link-mobile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      color: #666;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .nav-link-mobile:hover {
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    footer {
+      background: white;
+      border-top: 1px solid #e5e5e5;
+      margin-top: 80px;
+    }
+
+    .social {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social:hover {
+      background: #1a1a1a;
+      color: white;
     }
 
     @media (max-width: 768px) {
-      .sublatihan-section {
-        padding: 6rem 3% 3rem;
+      h1 {
+        font-size: 36px;
       }
 
-      .sublatihan-header {
-        padding: 1.5rem;
+      h2 {
+        font-size: 24px;
       }
 
-      .header-top {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .header-content h1 {
-        font-size: 1.5rem;
-      }
-
-      .header-meta {
-        justify-content: center;
-        gap: 1rem;
-      }
-
-      .sublatihan-card {
-        flex-direction: column;
-        padding: 1.5rem;
-      }
-
-      .sub-header {
-        flex-direction: column;
-      }
-
-      .sub-number {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
+      .hero-icon {
+        font-size: 48px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">BeningFH</div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li class="dropdown">
-        <a href="#" id="dropdownToggle">
-          Tugas <i class="fas fa-chevron-down"></i>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="max-w-6xl mx-auto px-4">
+      <nav class="py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="flex items-center gap-3">
+            <div style="width: 40px; height: 40px; border-radius: 8px; background: #1a1a1a; display: grid; place-items: center; color: white; font-weight: 700;">
+              BF
+            </div>
+            <div>
+              <div style="font-weight: 600; color: #1a1a1a;">BeningFH</div>
+            </div>
+          </a>
+
+          <div class="hidden md:flex items-center gap-2">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="Latihan.html" class="nav-link active">Latihan</a>
+          </div>
+
+          <div class="md:hidden">
+            <button id="menuBtn" style="padding: 8px; background: transparent; border: none; cursor: pointer;">
+              <i class="fa-solid fa-bars" style="font-size: 20px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="mobileMenu" class="mobile-menu">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <a href="index.html" class="nav-link-mobile">
+              <i class="fa-solid fa-home" style="width: 20px;"></i>
+              <span>Home</span>
+            </a>
+            <a href="about.html" class="nav-link-mobile">
+              <i class="fa-solid fa-user" style="width: 20px;"></i>
+              <span>About</span>
+            </a>
+            <a href="gallery.html" class="nav-link-mobile">
+              <i class="fa-solid fa-images" style="width: 20px;"></i>
+              <span>Gallery</span>
+            </a>
+            <a href="contact.html" class="nav-link-mobile">
+              <i class="fa-solid fa-envelope" style="width: 20px;"></i>
+              <span>Contact</span>
+            </a>
+            <a href="Latihan.html" class="nav-link-mobile">
+              <i class="fa-solid fa-code" style="width: 20px;"></i>
+              <span>Latihan</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding: 80px 16px 64px;">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Breadcrumb Navigation -->
+      <div style="margin-bottom: 32px;">
+        <a href="Latihan.html" class="breadcrumb">
+          <i class="fa-solid fa-arrow-left"></i>Kembali ke Hasil Latihan
         </a>
-        <ul class="dropdown-menu" id="dropdownMenu"></ul>
-      </li>
-    </ul>
-    <div class="menu-toggle" id="menuToggle">
-      <i class="fas fa-bars"></i>
-    </div>
-  </nav>
+      </div>
 
-  <!-- Sub Latihan Section -->
-  <section class="sublatihan-section">
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <i class="fas fa-chevron-right"></i>
-      <a href="latihan.html">Latihan</a>
-      <i class="fas fa-chevron-right"></i>
-      <span id="breadcrumbTitle">...</span>
-    </div>
+      <!-- Hero Section -->
+      <section style="text-align: center; margin-bottom: 64px;">
+        <div class="hero-icon" id="heroIcon">📝</div>
+        <h1 id="heroTitle">Loading...</h1>
+        <p class="hero-description" id="heroDescription">
+          Memuat data...
+        </p>
+        <div class="hero-meta">
+          <span><i class="fa-solid fa-calendar" style="margin-right: 8px;"></i>Minggu <span id="heroMinggu">-</span></span>
+          <span><i class="fa-solid fa-list" style="margin-right: 8px;"></i><span id="heroTotal">-</span> Sub Latihan</span>
+          <span><i class="fa-solid fa-clock" style="margin-right: 8px;"></i><span id="heroDuration">-</span></span>
+        </div>
+      </section>
 
-    <!-- Header -->
-    <div class="sublatihan-header" id="sublatihanHeader"></div>
+      <!-- Sub Exercise List -->
+      <section id="subLatihanContainer" style="margin-bottom: 64px;">
+        <!-- Will be populated by JavaScript -->
+      </section>
 
-    <!-- Sub Latihan List -->
-    <div class="sublatihan-list" id="sublatihanList"></div>
-  </section>
-
-  <script src="latihan-data.js"></script>
-  <script>
-    // Navbar Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    const dropdownToggle = document.getElementById('dropdownToggle');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-
-    dropdownToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      dropdownMenu.classList.toggle('show');
-    });
-
-    // Populate Dropdown Menu
-    function populateDropdown() {
-      const allLatihan = getAllLatihan();
-      dropdownMenu.innerHTML = '';
-      allLatihan.forEach(latihan => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="sublatihan.html?id=${latihan.id}">${latihan.icon} ${latihan.title}</a>`;
-        dropdownMenu.appendChild(li);
-      });
-    }
-
-    // Get ID from URL
-    function getIdFromUrl() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('id');
-    }
-
-    // Render Header
-    function renderHeader(latihan) {
-      const header = document.getElementById('sublatihanHeader');
-      const breadcrumb = document.getElementById('breadcrumbTitle');
-      
-      breadcrumb.textContent = latihan.title;
-      
-      const selesai = latihan.subLatihan.filter(sub => sub.status === 'selesai').length;
-      const progress = Math.round((selesai / latihan.totalSub) * 100);
-      
-      header.innerHTML = `
-        <div class="header-top">
-          <div class="header-icon">${latihan.icon}</div>
-          <div class="header-content">
-            <h1>${latihan.title}</h1>
-            <p>${latihan.description}</p>
-            <div class="header-meta">
-              <div class="meta-badge">
-                <i class="far fa-calendar"></i>
-                Minggu ${latihan.minggu}
+      <!-- Progress Summary -->
+      <section style="margin-bottom: 64px;">
+        <div class="stats-card">
+          <h2 style="text-align: center;">Progress Pembelajaran</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 48px;">
+            <!-- Selesai -->
+            <div class="stat-item">
+              <div id="statSelesai" class="stat-number" style="color: #16a34a;">0</div>
+              <div style="color: #666; font-size: 14px;">Sub Latihan Selesai</div>
+              <div class="progress-bar">
+                <div id="barSelesai" class="progress-fill" style="background: #16a34a; width: 0%;"></div>
               </div>
-              <div class="meta-badge">
-                <i class="far fa-clock"></i>
-                ${latihan.duration}
+            </div>
+            <!-- Dalam Progress -->
+            <div class="stat-item">
+              <div id="statProgress" class="stat-number" style="color: #d97706;">0</div>
+              <div style="color: #666; font-size: 14px;">Sedang Dikerjakan</div>
+              <div class="progress-bar">
+                <div id="barProgress" class="progress-fill" style="background: #d97706; width: 0%;"></div>
               </div>
-              <div class="meta-badge">
-                <i class="fas fa-tasks"></i>
-                ${selesai}/${latihan.totalSub} Selesai
+            </div>
+            <!-- Belum Mulai -->
+            <div class="stat-item">
+              <div id="statBelum" class="stat-number" style="color: #6b7280;">0</div>
+              <div style="color: #666; font-size: 14px;">Belum Dimulai</div>
+              <div class="progress-bar">
+                <div id="barBelum" class="progress-fill" style="background: #6b7280; width: 0%;"></div>
               </div>
-              <div class="meta-badge">
-                <i class="fas fa-chart-line"></i>
-                ${progress}% Progress
+            </div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #666;">Total Progress</div>
+            <div id="totalProgress" style="font-size: 56px; font-weight: 700; margin-bottom: 16px; color: #1a1a1a;">
+              0%
+            </div>
+            <div style="max-width: 400px; margin: 0 auto;">
+              <div class="progress-bar" style="height: 12px;">
+                <div id="totalProgressBar" class="progress-fill" style="background: #1a1a1a; width: 0%;"></div>
               </div>
             </div>
           </div>
         </div>
-      `;
-    }
+      </section>
 
-    // Category gradient mapping
-    const categoryGradients = {
-      'HTML5': 'gradient-html5',
-      'SEO': 'gradient-seo',
-      'Text': 'gradient-text',
-      'Font': 'gradient-font',
-      'Format': 'gradient-format',
-      'Animation': 'gradient-animation',
-      'Special': 'gradient-special',
-      'Media': 'gradient-media',
-      'Audio': 'gradient-audio',
-      'Image': 'gradient-image',
-      'Interactive': 'gradient-interactive',
-      'Video': 'gradient-video',
-      'Advanced': 'gradient-advanced',
-      'Navigation': 'gradient-navigation',
-      'List': 'gradient-list',
-      'Table': 'gradient-table',
-      'Form': 'gradient-form',
-      'Layout': 'gradient-layout',
-      'Content': 'gradient-content',
-      'Embed': 'gradient-embed',
-      'Styling': 'gradient-styling',
-      'Semantic': 'gradient-semantic',
-      'Background': 'gradient-background',
-      'Alignment': 'gradient-alignment',
-      'Selector': 'gradient-selector',
-      'External': 'gradient-external',
-      'Organization': 'gradient-organization',
-      'Container': 'gradient-container',
-      'Inline': 'gradient-inline',
-      'Output': 'gradient-output',
-      'Math': 'gradient-math',
-      'Variable': 'gradient-variable',
-      'Dialog': 'gradient-dialog',
-      'Event': 'gradient-event',
-      'Input': 'gradient-input',
-      'Loop': 'gradient-loop',
-      'Operator': 'gradient-operator',
-      'Assignment': 'gradient-assignment',
-      'Comparison': 'gradient-comparison',
-      'Logic': 'gradient-logic',
-      'String': 'gradient-string',
-      'Type': 'gradient-type',
-      'Conditional': 'gradient-conditional',
-      'Array': 'gradient-array',
-      'Function': 'gradient-function',
-      'Project': 'gradient-project'
+      <!-- Action Buttons -->
+      <section style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+        <a href="Latihan.html" class="btn btn-outline">
+          <i class="fa-solid fa-arrow-left"></i>Kembali ke Daftar Latihan
+        </a>
+        <a id="btnLanjutkan" href="#" class="btn btn-primary">
+          <i class="fa-solid fa-play"></i>Lanjutkan Latihan
+        </a>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="padding: 32px 16px;">
+    <div class="max-w-6xl mx-auto">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+        <!-- Social Media -->
+        <div style="display: flex; gap: 12px;">
+          <a href="https://github.com" target="_blank" class="social" title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="social" title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="social" title="Twitter">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="social" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+
+        <!-- Copyright -->
+        <div style="font-size: 14px; color: #666; text-align: center;">
+          <p>&copy; 2024 BeningFH. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    });
+
+    // Mock data untuk demo
+    const latihanData = {
+      'pertemuan-1': {
+        icon: '📝',
+        title: 'HTML Dasar',
+        description: 'Mempelajari struktur dasar HTML dan elemen-elemen penting',
+        minggu: '1',
+        totalSub: '5',
+        duration: '2 jam',
+        subLatihan: [
+          {
+            title: 'Pengenalan HTML',
+            description: 'Memahami struktur dasar dokumen HTML',
+            category: 'HTML',
+            icon: 'fa-code',
+            status: 'selesai',
+            link: '#'
+          },
+          {
+            title: 'Tag dan Elemen',
+            description: 'Belajar berbagai tag HTML dan penggunaannya',
+            category: 'HTML',
+            icon: 'fa-code',
+            status: 'progress',
+            link: '#'
+          },
+          {
+            title: 'Formulir HTML',
+            description: 'Membuat formulir input dengan HTML',
+            category: 'HTML',
+            icon: 'fa-code',
+            status: 'belum',
+            link: '#'
+          }
+        ]
+      }
     };
 
-    // Render Sub Latihan List
-    function renderSubLatihan(latihan) {
-      const list = document.getElementById('sublatihanList');
+    // Load dynamic content based on URL parameter
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const pertemuanId = urlParams.get('id') || 'pertemuan-1';
       
-      if (!latihan.subLatihan || latihan.subLatihan.length === 0) {
-        list.innerHTML = `
-          <div class="empty-state">
-            <i class="fas fa-folder-open"></i>
-            <h3>Belum Ada Sub Latihan</h3>
-            <p>Sub latihan untuk topik ini akan segera ditambahkan</p>
-            <a href="latihan.html" class="btn-back">
-              <i class="fas fa-arrow-left"></i> Kembali ke Daftar Latihan
-            </a>
-          </div>
-        `;
-        return;
-      }
+      // Get pertemuan data
+      const pertemuan = latihanData[pertemuanId] || latihanData['pertemuan-1'];
       
-      list.innerHTML = '';
+      // Update Hero Section
+      document.getElementById('heroIcon').textContent = pertemuan.icon;
+      document.getElementById('heroTitle').textContent = pertemuan.title;
+      document.getElementById('heroDescription').textContent = pertemuan.description;
+      document.getElementById('heroMinggu').textContent = pertemuan.minggu;
+      document.getElementById('heroTotal').textContent = pertemuan.totalSub;
+      document.getElementById('heroDuration').textContent = pertemuan.duration;
+      document.title = `${pertemuan.title} - Sub Latihan`;
       
-      latihan.subLatihan.forEach((sub, index) => {
-        const card = document.createElement('div');
-        card.className = 'sublatihan-card';
+      // Render Sub Latihan
+      const container = document.getElementById('subLatihanContainer');
+      container.innerHTML = '';
+      
+      const statusConfig = {
+        selesai: {
+          class: 'badge-selesai',
+          text: 'Selesai',
+          icon: 'fa-check-circle'
+        },
+        progress: {
+          class: 'badge-progress',
+          text: 'Dalam Progress',
+          icon: 'fa-clock'
+        },
+        belum: {
+          class: 'badge-belum',
+          text: 'Belum Mulai',
+          icon: 'fa-circle'
+        }
+      };
+      
+      pertemuan.subLatihan.forEach((sub, index) => {
+        const status = statusConfig[sub.status];
         
-        const statusClass = sub.status === 'selesai' ? 'status-selesai' : 'status-proses';
-        const statusIcon = sub.status === 'selesai' ? 'fa-check-circle' : 'fa-spinner';
-        const statusText = sub.status === 'selesai' ? 'Selesai' : 'Dalam Proses';
-        const gradientClass = categoryGradients[sub.category] || 'gradient-html5';
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.cursor = 'pointer';
+        card.onclick = () => window.location.href = sub.link;
         
         card.innerHTML = `
-          <div class="icon-wrapper">
-            <div class="sub-icon-box ${gradientClass}">
-              <i class="fas ${sub.icon}"></i>
-            </div>
-            <div class="sub-number">${index + 1}</div>
-          </div>
-          <div class="sub-content">
-            <div class="sub-header">
-              <div class="sub-title-group">
-                <h3 class="sub-title">${sub.title}</h3>
-                <span class="sub-category">
-                  <i class="fas ${sub.icon}"></i>
-                  ${sub.category}
+          <div style="display: flex; align-items: start; gap: 16px;">
+            <div class="number-circle">${index + 1}</div>
+            <div style="flex: 1;">
+              <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px; color: #1a1a1a;">${sub.title}</h3>
+              <p style="color: #666; font-size: 14px; margin-bottom: 16px;">${sub.description}</p>
+              <div style="display: flex; flex-wrap: gap: 8px;">
+                <span class="badge badge-category">
+                  <i class="fa-solid ${sub.icon}"></i>${sub.category}
+                </span>
+                <span class="badge ${status.class}">
+                  <i class="fa-solid ${status.icon}"></i>${status.text}
                 </span>
               </div>
-              <div class="sub-status ${statusClass}">
-                <i class="fas ${statusIcon}"></i>
-                ${statusText}
-              </div>
             </div>
-            <p class="sub-description">${sub.description}</p>
-            <a href="${sub.link}" class="sub-link" target="_blank">
-              <i class="fas fa-external-link-alt"></i>
-              Buka Latihan
-            </a>
+            <div style="color: #ccc;">
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
           </div>
         `;
         
-        list.appendChild(card);
+        container.appendChild(card);
       });
-    }
-
-    // Initialize
-    populateDropdown();
-    
-    const latihanId = getIdFromUrl();
-    
-    if (latihanId) {
-      const latihan = getLatihanById(parseInt(latihanId));
       
-      if (latihan) {
-        renderHeader(latihan);
-        renderSubLatihan(latihan);
+      // Calculate Progress
+      const selesai = pertemuan.subLatihan.filter(s => s.status === 'selesai').length;
+      const progress = pertemuan.subLatihan.filter(s => s.status === 'progress').length;
+      const belum = pertemuan.subLatihan.filter(s => s.status === 'belum').length;
+      const total = pertemuan.subLatihan.length;
+      const percentage = Math.round((selesai / total) * 100);
+      
+      // Update Stats
+      document.getElementById('statSelesai').textContent = selesai;
+      document.getElementById('statProgress').textContent = progress;
+      document.getElementById('statBelum').textContent = belum;
+      document.getElementById('totalProgress').textContent = percentage + '%';
+      
+      // Update Progress Bars dengan animasi
+      setTimeout(() => {
+        document.getElementById('barSelesai').style.width = (selesai > 0 ? (selesai / total) * 100 : 0) + '%';
+        document.getElementById('barProgress').style.width = (progress > 0 ? (progress / total) * 100 : 0) + '%';
+        document.getElementById('barBelum').style.width = (belum > 0 ? (belum / total) * 100 : 0) + '%';
+        document.getElementById('totalProgressBar').style.width = percentage + '%';
+      }, 100);
+      
+      // Update "Lanjutkan" button
+      const nextSub = pertemuan.subLatihan.find(s => s.status === 'progress') || 
+                      pertemuan.subLatihan.find(s => s.status === 'belum');
+      if (nextSub) {
+        document.getElementById('btnLanjutkan').href = nextSub.link;
       } else {
-        document.getElementById('sublatihanList').innerHTML = `
-          <div class="empty-state">
-            <i class="fas fa-exclamation-triangle"></i>
-            <h3>Latihan Tidak Ditemukan</h3>
-            <p>Latihan dengan ID tersebut tidak tersedia</p>
-            <a href="latihan.html" class="btn-back">
-              <i class="fas fa-arrow-left"></i> Kembali ke Daftar Latihan
-            </a>
-          </div>
-        `;
+        document.getElementById('btnLanjutkan').href = '#';
+        document.getElementById('btnLanjutkan').innerHTML = '<i class="fa-solid fa-check"></i>Semua Selesai';
       }
-    } else {
-      window.location.href = 'latihan.html';
-    }
+    });
   </script>
 </body>
 </html>
