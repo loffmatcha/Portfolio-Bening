@@ -282,6 +282,7 @@
       }
     }
   </style>
+      <script src="latihan-data.js"></script>
 </head>
 <body>
   <!-- NAVBAR -->
@@ -331,7 +332,7 @@
               <i class="fa-solid fa-envelope" style="width: 20px;"></i>
               <span>Contact</span>
             </a>
-            <a href="Latihan.html" class="nav-link-mobile">
+            <a href="latihan.html" class="nav-link-mobile">
               <i class="fa-solid fa-code" style="width: 20px;"></i>
               <span>Latihan</span>
             </a>
@@ -347,7 +348,7 @@
       
       <!-- Breadcrumb Navigation -->
       <div style="margin-bottom: 32px;">
-        <a href="Latihan.html" class="breadcrumb">
+        <a href="latihan.html" class="breadcrumb">
           <i class="fa-solid fa-arrow-left"></i>Kembali ke Hasil Latihan
         </a>
       </div>
@@ -417,7 +418,7 @@
 
       <!-- Action Buttons -->
       <section style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
-        <a href="Latihan.html" class="btn btn-outline">
+        <a href="latihan.html" class="btn btn-outline">
           <i class="fa-solid fa-arrow-left"></i>Kembali ke Daftar Latihan
         </a>
         <a id="btnLanjutkan" href="#" class="btn btn-primary">
@@ -458,152 +459,139 @@
 
   <!-- JavaScript -->
   <script>
-    // Mobile menu toggle
-    document.getElementById('menuBtn').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    });
+  // Cek apakah latihan-data.js berhasil dimuat
+  if (typeof latihanData === 'undefined') {
+    console.error('latihan-data.js gagal dimuat!');
+    document.getElementById('page-loader').innerHTML = `
+      <div class="text-center text-white">
+        <i class="fa-solid fa-exclamation-triangle text-6xl mb-4 text-red-400"></i>
+        <p class="text-xl font-bold mb-2">Error Loading Data</p>
+        <p class="mb-4">File latihan-data.js tidak dapat dimuat</p>
+        <button onclick="location.reload()" class="px-6 py-3 bg-purple-600 rounded-lg hover:bg-purple-700">
+          Coba Lagi
+        </button>
+      </div>
+    `;
+  }
 
-    // Mock data untuk demo
-    const latihanData = {
-      'pertemuan-1': {
-        icon: '📝',
-        title: 'HTML Dasar',
-        description: 'Mempelajari struktur dasar HTML dan elemen-elemen penting',
-        minggu: '1',
-        totalSub: '5',
-        duration: '2 jam',
-        subLatihan: [
-          {
-            title: 'Pengenalan HTML',
-            description: 'Memahami struktur dasar dokumen HTML',
-            category: 'HTML',
-            icon: 'fa-code',
-            status: 'selesai',
-            link: '#'
-          },
-          {
-            title: 'Tag dan Elemen',
-            description: 'Belajar berbagai tag HTML dan penggunaannya',
-            category: 'HTML',
-            icon: 'fa-code',
-            status: 'progress',
-            link: '#'
-          },
-          {
-            title: 'Formulir HTML',
-            description: 'Membuat formulir input dengan HTML',
-            category: 'HTML',
-            icon: 'fa-code',
-            status: 'belum',
-            link: '#'
-          }
-        ]
+  // Load dynamic content based on URL parameter
+  document.addEventListener('DOMContentLoaded', () => {
+    // Hide loader setelah halaman siap
+    setTimeout(() => {
+      document.getElementById('page-loader').style.display = 'none';
+    }, 500);
+
+    // Get URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const pertemuanId = urlParams.get('id');
+    
+    // Check if ID exists
+    if (!pertemuanId || !latihanData[pertemuanId]) {
+      alert('Pertemuan tidak ditemukan!');
+      window.location.href = 'latihan.html';
+      return;
+    }
+    
+    // Get pertemuan data
+    const pertemuan = latihanData[pertemuanId];
+    
+    // Update Hero Section
+    document.getElementById('heroIcon').textContent = pertemuan.icon;
+    document.getElementById('heroTitle').textContent = pertemuan.title;
+    document.getElementById('heroDescription').textContent = pertemuan.description;
+    document.getElementById('heroMinggu').textContent = pertemuan.minggu;
+    document.getElementById('heroTotal').textContent = pertemuan.totalSub;
+    document.getElementById('heroDuration').textContent = pertemuan.duration;
+    document.title = `${pertemuan.title} - Sub Latihan`;
+    
+    // Render Sub Latihan
+    const container = document.getElementById('subLatihanContainer');
+    container.innerHTML = ''; // Clear
+    
+    const statusConfig = {
+      selesai: {
+        color: 'status-selesai',
+        text: 'Selesai',
+        icon: 'fa-check-circle'
+      },
+      progress: {
+        color: 'status-progress',
+        text: 'Dalam Progress',
+        icon: 'fa-clock'
+      },
+      belum: {
+        color: 'status-belum',
+        text: 'Belum Mulai',
+        icon: 'fa-circle'
       }
     };
-
-    // Load dynamic content based on URL parameter
-    document.addEventListener('DOMContentLoaded', () => {
-      // Get URL parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      const pertemuanId = urlParams.get('id') || 'pertemuan-1';
+    
+    pertemuan.subLatihan.forEach((sub, index) => {
+      const status = statusConfig[sub.status];
       
-      // Get pertemuan data
-      const pertemuan = latihanData[pertemuanId] || latihanData['pertemuan-1'];
+      const card = document.createElement('div');
+      card.className = 'glass p-6 fade-in hover:scale-[1.01] transition-transform cursor-pointer';
+      card.onclick = () => window.location.href = sub.link;
       
-      // Update Hero Section
-      document.getElementById('heroIcon').textContent = pertemuan.icon;
-      document.getElementById('heroTitle').textContent = pertemuan.title;
-      document.getElementById('heroDescription').textContent = pertemuan.description;
-      document.getElementById('heroMinggu').textContent = pertemuan.minggu;
-      document.getElementById('heroTotal').textContent = pertemuan.totalSub;
-      document.getElementById('heroDuration').textContent = pertemuan.duration;
-      document.title = `${pertemuan.title} - Sub Latihan`;
-      
-      // Render Sub Latihan
-      const container = document.getElementById('subLatihanContainer');
-      container.innerHTML = '';
-      
-      const statusConfig = {
-        selesai: {
-          class: 'badge-selesai',
-          text: 'Selesai',
-          icon: 'fa-check-circle'
-        },
-        progress: {
-          class: 'badge-progress',
-          text: 'Dalam Progress',
-          icon: 'fa-clock'
-        },
-        belum: {
-          class: 'badge-belum',
-          text: 'Belum Mulai',
-          icon: 'fa-circle'
-        }
-      };
-      
-      pertemuan.subLatihan.forEach((sub, index) => {
-        const status = statusConfig[sub.status];
-        
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.style.cursor = 'pointer';
-        card.onclick = () => window.location.href = sub.link;
-        
-        card.innerHTML = `
-          <div style="display: flex; align-items: start; gap: 16px;">
-            <div class="number-circle">${index + 1}</div>
-            <div style="flex: 1;">
-              <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px; color: #1a1a1a;">${sub.title}</h3>
-              <p style="color: #666; font-size: 14px; margin-bottom: 16px;">${sub.description}</p>
-              <div style="display: flex; flex-wrap: gap: 8px;">
-                <span class="badge badge-category">
-                  <i class="fa-solid ${sub.icon}"></i>${sub.category}
-                </span>
-                <span class="badge ${status.class}">
-                  <i class="fa-solid ${status.icon}"></i>${status.text}
-                </span>
-              </div>
-            </div>
-            <div style="color: #ccc;">
-              <i class="fa-solid fa-chevron-right"></i>
+      card.innerHTML = `
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 flex items-center justify-center font-bold text-white text-lg">
+            ${index + 1}
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold mb-2">${sub.title}</h3>
+            <p class="opacity-80 text-sm mb-3">
+              ${sub.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-400 border border-purple-500/30">
+                <i class="fa-solid ${sub.icon} mr-1"></i>${sub.category}
+              </span>
+              <span class="px-3 py-1 rounded-full text-xs ${status.color} border">
+                <i class="fa-solid ${status.icon} mr-1"></i>${status.text}
+              </span>
             </div>
           </div>
-        `;
-        
-        container.appendChild(card);
-      });
+          <div class="flex-shrink-0">
+            <i class="fa-solid fa-chevron-right opacity-50"></i>
+          </div>
+        </div>
+      `;
       
-      // Calculate Progress
-      const selesai = pertemuan.subLatihan.filter(s => s.status === 'selesai').length;
-      const progress = pertemuan.subLatihan.filter(s => s.status === 'progress').length;
-      const belum = pertemuan.subLatihan.filter(s => s.status === 'belum').length;
-      const total = pertemuan.subLatihan.length;
-      const percentage = Math.round((selesai / total) * 100);
-      
-      // Update Stats
-      document.getElementById('statSelesai').textContent = selesai;
-      document.getElementById('statProgress').textContent = progress;
-      document.getElementById('statBelum').textContent = belum;
-      document.getElementById('totalProgress').textContent = percentage + '%';
-      
-      // Update Progress Bars dengan animasi
-      setTimeout(() => {
-        document.getElementById('barSelesai').style.width = (selesai > 0 ? (selesai / total) * 100 : 0) + '%';
-        document.getElementById('barProgress').style.width = (progress > 0 ? (progress / total) * 100 : 0) + '%';
-        document.getElementById('barBelum').style.width = (belum > 0 ? (belum / total) * 100 : 0) + '%';
-        document.getElementById('totalProgressBar').style.width = percentage + '%';
-      }, 100);
-      
-      // Update "Lanjutkan" button
-      const nextSub = pertemuan.subLatihan.find(s => s.status === 'progress') || 
-                      pertemuan.subLatihan.find(s => s.status === 'belum');
-      if (nextSub) {
-        document.getElementById('btnLanjutkan').href = nextSub.link;
-      } else {
-        document.getElementById('btnLanjutkan').href = '#';
-        document.getElementById('btnLanjutkan').innerHTML = '<i class="fa-solid fa-check"></i>Semua Selesai';
-      }
+      container.appendChild(card);
     });
-  </script>
+    
+    // Calculate Progress
+    const selesai = pertemuan.subLatihan.filter(s => s.status === 'selesai').length;
+    const progress = pertemuan.subLatihan.filter(s => s.status === 'progress').length;
+    const belum = pertemuan.subLatihan.filter(s => s.status === 'belum').length;
+    const total = pertemuan.subLatihan.length;
+    const percentage = Math.round((selesai / total) * 100);
+    
+    // Update Stats
+    document.getElementById('statSelesai').textContent = selesai;
+    document.getElementById('statProgress').textContent = progress;
+    document.getElementById('statBelum').textContent = belum;
+    document.getElementById('totalProgress').textContent = percentage + '%';
+    
+    // Update Progress Bars dengan animasi
+    setTimeout(() => {
+      document.getElementById('barSelesai').style.width = (selesai > 0 ? (selesai / total) * 100 : 0) + '%';
+      document.getElementById('barProgress').style.width = (progress > 0 ? (progress / total) * 100 : 0) + '%';
+      document.getElementById('barBelum').style.width = (belum > 0 ? (belum / total) * 100 : 0) + '%';
+      document.getElementById('totalProgressBar').style.width = percentage + '%';
+    }, 100);
+    
+    // Update "Lanjutkan" button
+    const nextSub = pertemuan.subLatihan.find(s => s.status === 'progress') || 
+                    pertemuan.subLatihan.find(s => s.status === 'belum');
+    if (nextSub) {
+      document.getElementById('btnLanjutkan').href = nextSub.link;
+    } else {
+      document.getElementById('btnLanjutkan').href = '#';
+      document.getElementById('btnLanjutkan').innerHTML = '<i class="fa-solid fa-check mr-2"></i>Semua Selesai';
+    }
+  });
+</script>
 </body>
 </html>
